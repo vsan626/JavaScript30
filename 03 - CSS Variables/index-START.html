@@ -67,6 +67,7 @@
     function handleUpdate(){
       //if element doesn't use px from dataset.sizing, leave empty
       const suffix = this.dataset.sizing || '';
+      //documentElement.style.setProperty(property name, set to value)
       document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
     }
 
