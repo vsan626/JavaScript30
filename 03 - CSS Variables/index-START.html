@@ -25,6 +25,23 @@
     /*
       misc styles, nothing to do with CSS variables
     */
+    :root {
+      /* CSS VARIABLES*/
+      --base: #ffc600;
+      --spacing: 10px;
+      --blue: 10px;
+    }
+    
+    img {
+      /* USING CSS VARIABLES */
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+
+    .hl{
+      color: var(--base);
+    }
 
     body {
       text-align: center;
@@ -45,7 +62,18 @@
   </style>
 
   <script>
-    //testing
+    const inputs = document.querySelectorAll('.controls input');
+
+    function handleUpdate(){
+      //if element doesn't use px from dataset.sizing, leave empty
+      const suffix = this.dataset.sizing || '';
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
+    }
+
+    //when input is changed run handleUpdate function
+    inputs.forEach(input => input.addEventListener('change', handleUpdate))
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
+
 
   </script>
 
